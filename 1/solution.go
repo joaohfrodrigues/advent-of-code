@@ -11,7 +11,6 @@ import (
 
 // Return the absolute value of x
 func abs(x int) int {
-
 	if x < 0 {
 		return -x
 	}
@@ -34,13 +33,13 @@ func get_total_distance(list1 []int, list2 []int, input_length int) int{
 
 // Count the number of elements in a slice
 func count(slice []int, value int) int {
-    count := 0
-    for _, s := range slice {
-        if s == value {
+	count := 0
+	for _, s := range slice {
+		if s == value {
 			count++
 		}
-    }
-    return count
+	}
+	return count
 }
 
 
