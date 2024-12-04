@@ -18,7 +18,7 @@ func abs(x int) int {
 }
 
 // Part 1: get the total distance between the two lists
-func get_total_distance(list1 []int, list2 []int, input_length int) int{
+func get_total_distance(list1 []int, list2 []int, input_length int) int {
 	// Sort the list1 and list2
 	slices.Sort(list1)
 	slices.Sort(list2)
@@ -42,7 +42,6 @@ func count(slice []int, value int) int {
 	return count
 }
 
-
 // Part 2: get the similarity between the two lists
 // Similarity is defined as the product between the value of an element in the first list and the amount of times it appears in the second list
 func get_similarity_score(list1 []int, list2 []int, input_length int) int {
@@ -57,20 +56,20 @@ func get_similarity_score(list1 []int, list2 []int, input_length int) int {
 func main() {
 
 	// Open and read input file
-	file, err := os.Open("input.csv") 
+	file, err := os.Open("input.csv")
 
 	if err != nil {
-		log.Fatal("Error while reading the file", err) 
-	} 
+		log.Fatal("Error while reading the file", err)
+	}
 
-	defer file.Close() 
+	defer file.Close()
 
-	reader := csv.NewReader(file) 
-	records, err := reader.ReadAll() 
+	reader := csv.NewReader(file)
+	records, err := reader.ReadAll()
 
-	if err != nil { 
-		fmt.Println("Error reading records") 
-	} 
+	if err != nil {
+		fmt.Println("Error reading records")
+	}
 
 	input_length := len(records)
 
@@ -81,7 +80,7 @@ func main() {
 	list2 = make([]int, input_length)
 
 	// Populate both lists from records
-	for idx, eachrecord := range records { 
+	for idx, eachrecord := range records {
 		list1[idx], _ = strconv.Atoi(eachrecord[0])
 		list2[idx], _ = strconv.Atoi(eachrecord[1])
 	}
