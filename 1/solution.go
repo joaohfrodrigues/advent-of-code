@@ -60,32 +60,32 @@ func main() {
 	// Open and read input file
 	file, err := os.Open("input.csv") 
 
-    if err != nil {
+	if err != nil {
 		log.Fatal("Error while reading the file", err) 
-    } 
-  
-    defer file.Close() 
-  
-    reader := csv.NewReader(file) 
-    records, err := reader.ReadAll() 
-  
-    if err != nil { 
-        fmt.Println("Error reading records") 
-    } 
-	
+	} 
+
+	defer file.Close() 
+
+	reader := csv.NewReader(file) 
+	records, err := reader.ReadAll() 
+
+	if err != nil { 
+		fmt.Println("Error reading records") 
+	} 
+
 	input_length := len(records)
-	
+
 	// Initialize both lists
 	var list1 []int
 	var list2 []int
 	list1 = make([]int, input_length)
 	list2 = make([]int, input_length)
-	
+
 	// Populate both lists from records
-    for idx, eachrecord := range records { 
+	for idx, eachrecord := range records { 
 		list1[idx], _ = strconv.Atoi(eachrecord[0])
 		list2[idx], _ = strconv.Atoi(eachrecord[1])
-    }
+	}
 
 	total_distance := get_total_distance(list1, list2, input_length)
 	fmt.Println("Part 1: total distance is", total_distance)
