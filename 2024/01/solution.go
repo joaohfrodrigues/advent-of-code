@@ -18,17 +18,17 @@ func abs(x int) int {
 }
 
 // Part 1: get the total distance between the two lists
-func get_total_distance(list1 []int, list2 []int, input_length int) int {
+func getTotalDistance(list1 []int, list2 []int, inputLength int) int {
 	// Sort the list1 and list2
 	slices.Sort(list1)
 	slices.Sort(list2)
 
 	// Calculate the total distance
-	total_distance := 0
-	for idx := range input_length {
-		total_distance += abs(list1[idx] - list2[idx])
+	totalDistance := 0
+	for idx := range inputLength {
+		totalDistance += abs(list1[idx] - list2[idx])
 	}
-	return total_distance
+	return totalDistance
 }
 
 // Count the number of elements in a slice
@@ -44,13 +44,12 @@ func count(slice []int, value int) int {
 
 // Part 2: get the similarity between the two lists
 // Similarity is defined as the product between the value of an element in the first list and the amount of times it appears in the second list
-func get_similarity_score(list1 []int, list2 []int, input_length int) int {
-	similarity_score := 0
-	for idx := range input_length {
-		similarity_score += list1[idx] * count(list2, list1[idx])
+func getSimilarityScore(list1 []int, list2 []int, inputLength int) int {
+	similarityScore := 0
+	for idx := range inputLength {
+		similarityScore += list1[idx] * count(list2, list1[idx])
 	}
-
-	return similarity_score
+	return similarityScore
 }
 
 func main() {
@@ -71,13 +70,13 @@ func main() {
 		fmt.Println("Error reading records")
 	}
 
-	input_length := len(records)
+	inputLength := len(records)
 
 	// Initialize both lists
 	var list1 []int
 	var list2 []int
-	list1 = make([]int, input_length)
-	list2 = make([]int, input_length)
+	list1 = make([]int, inputLength)
+	list2 = make([]int, inputLength)
 
 	// Populate both lists from records
 	for idx, eachrecord := range records {
@@ -85,10 +84,10 @@ func main() {
 		list2[idx], _ = strconv.Atoi(eachrecord[1])
 	}
 
-	total_distance := get_total_distance(list1, list2, input_length)
-	fmt.Println("Part 1: total distance is", total_distance)
+	totalDistance := getTotalDistance(list1, list2, inputLength)
+	fmt.Println("Part 1: total distance is", totalDistance)
 
-	similarity_score := get_similarity_score(list1, list2, input_length)
-	fmt.Println("Part 2: similarity score is", similarity_score)
+	similarityScore := getSimilarityScore(list1, list2, inputLength)
+	fmt.Println("Part 2: similarity score is", similarityScore)
 
 }
